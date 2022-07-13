@@ -32,7 +32,7 @@ class PlanController extends Controller
     }
 
 
-    
+
     public function store(Request $request)
     { /*Request pega os dados que vem do formulário */
 
@@ -43,5 +43,29 @@ class PlanController extends Controller
 
 
         return redirect()->route('plans.index');
+    }
+
+    public function show($url)/*passo a url da rota para este método aqui. Listo os planos criados/existentes  */
+    {
+        $plan = $this->repository->where('url', $url)->first();
+
+        if (!$plan)
+            return redirect()->back();
+
+        return view('admin.pages.plans.show', [
+            'plan' => $plan
+        ]);
+    }
+
+    public function destroy($url)
+    {
+        $plan = $this->repository->where('url', $url)->first(); /*encontra o plano pela url */
+
+        if (!$plan) /*se não encontrar o plano, url digitada errada direciona de volta */
+            return redirect()->back();
+
+        $plan->delete();/*exclui o plano */
+
+        return redirect()->route('plans.index'); /*após excluir o plano retorna para a listagem dos planos */
     }
 }

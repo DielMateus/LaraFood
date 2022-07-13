@@ -9,7 +9,7 @@
 @section('content')
     <div class="card">
         <div class="card-body">
-            <form action="{{ route('plans.store') }}" class="form" method="POST">
+            <form action="{{ route('plans.store') }}" class="form" method="POST">  {{--Pega os dados digitados no formulário e mando pro método store dentro do controller que manda pra view que será exibido no index.blade.php  --}}
                 @csrf
 
                 <div class="form-group">
