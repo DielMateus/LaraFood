@@ -9,6 +9,7 @@ use Illuminate\Support\Str;
 
 class PlanController extends Controller
 {
+    /*o nosso repository é a nossa própria model Plan */
     private $repository;
 
     public function __construct(Plan $plan) /*Plan --> é a model que temos que importar */
@@ -68,4 +69,18 @@ class PlanController extends Controller
 
         return redirect()->route('plans.index'); /*após excluir o plano retorna para a listagem dos planos */
     }
+
+    //filtros de pesquisa
+    public function search(Request $request){
+
+        $filters = $request->except('_token');/*pega os dados exceto o token */
+
+        $plans = $this->repository->search($request->filter);
+
+        return view('admin.pages.plans.index', [
+            'plans' => $plans,
+            'filters' => $filters,
+        ]);
+    }
+
 }

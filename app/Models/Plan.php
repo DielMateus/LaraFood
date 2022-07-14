@@ -11,4 +11,12 @@ class Plan extends Model
 
     protected $fillable = ['name', 'url', 'price', 'description'];
 
+
+    // ESTE MÉTODO FAZ A QUERY QEU LIGA O CONTROLLER
+    public function search($filter = null){
+        $results = $this->where('name', 'LIKE', "%{$filter}%")->orWhere('description', 'LIKE', "%{$filter}%")->paginate();
+
+        return $results;
+    }
+
 }
