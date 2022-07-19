@@ -7,7 +7,7 @@
         <li class="breadcrumb-item"><a href="{{ route('admin.index') }}">Dashoboard</a></li>
         <li class="breadcrumb-item active"><a href="{{ route('plans.index') }}">Planos</a></li>
     </ol>
-    <h1>Planos <a href="{{ route('plans.create') }}" class="btn btn-dark">ADD</a></h1>
+    <h1>Planos <a href="{{ route('plans.create') }}" class="btn btn-dark">ADD <i class="fas fa-plus"></i></a></h1>
 @stop
 
 @section('content')
@@ -39,7 +39,8 @@
                             <td>
                                 {{ number_format($plan->price, 2, ',', '.') }}
                             </td>
-                            <td style="width: 20px;">
+                            <td style="width: 30;">
+                                <a href="{{ route('plans.edit', $plan->url )}}" class="btn btn-info"> Edit</a>
                                 <a href="{{ route('plans.show', $plan->url) }}" class="btn btn-warning">Ver</a>
                             </td>
                         </tr>

@@ -28,7 +28,7 @@
                 <form action="{{ route('plans.destroy', $plan->url) }}" method="POST">
                     @csrf  {{-- valida nossa requisição, cria dois fields ocultos ao inspecionar para esta diretiva e para o delete --}}
                     @method('DELETE')
-                    <button type="submit" class="btn btn-danger">DELETAR O PLANO {{ $plan->name}}</button>
+                    <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i> DELETAR O PLANO {{ $plan->name}}</button>
                 </form>
 
             </div>
