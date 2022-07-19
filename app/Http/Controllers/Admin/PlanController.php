@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreUpdatePlan;
 use App\Models\Plan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -34,8 +35,8 @@ class PlanController extends Controller
 
 
 
-    public function store(Request $request)
-    { /*Request pega os dados que vem do formulário */
+    public function store(StoreUpdatePlan $request)
+    { /*Request pega os dados que vem do formulário, como criamos o StoreUpdatePlan dentro de Requests/StoreUpdatePlan para validar, aí tirei o request */
 
 
         $data = $request->all();
@@ -96,7 +97,7 @@ class PlanController extends Controller
 
     }
 
-    public function update(Request $request, $url){
+    public function update(StoreUpdatePlan $request, $url){
         $plan = $this->repository->where('url', $url)->first();
 
         if (!$plan)
