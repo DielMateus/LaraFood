@@ -11,7 +11,6 @@
         <div class="card-body">
             <form action="{{ route('plans.store') }}" class="form" method="POST">  {{--Pega os dados digitados no formulário e mando pro método store dentro do controller que manda pra view que será exibido no index.blade.php  --}}
                 @csrf
-
                 <div class="form-group">
                     <label>Nome:</label>
                     <input type="text" name="name" class="form-control" placeholder="Nome:">
