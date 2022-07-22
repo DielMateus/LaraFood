@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreUpdatePlan;
 use App\Models\Plan;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
 
 class PlanController extends Controller
 {
@@ -39,9 +38,9 @@ class PlanController extends Controller
     { /*Request pega os dados que vem do formulário, como criamos o StoreUpdatePlan dentro de Requests/StoreUpdatePlan para validar, aí tirei o request */
 
 
-        $data = $request->all();
-        $data['url'] = Str::kebab($request->name); /*como não tenho esse campo criado para cadastro ele gera por debaixo dos panos por hora um dado/informação sem precisar inserir */
-        $this->repository->create($data);
+        //$data = $request->all();
+        //$data['url'] = Str::kebab($request->name); /*como não tenho esse campo criado para cadastro ele gera por debaixo dos panos por hora um dado/informação sem precisar inserir */
+        $this->repository->create($request->all());
 
 
         return redirect()->route('plans.index');
