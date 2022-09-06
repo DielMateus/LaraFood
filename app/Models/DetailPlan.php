@@ -1,17 +1,18 @@
 <?php
 
-namespace App\Models\Models;
+namespace App\Models;
 
-use App\Models\Plan;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class DetailPlan extends Model
 {
-    protected $table = 'details_plan';
+    protected $table = 'detail_plans';
 
-    /*Um detalhe eu retorno o plano dele */
-    public function plan(){
+    protected $fillable = ['name'];
+
+
+    public function plan()
+    {
         $this->belongsTo(Plan::class);
     }
 }
